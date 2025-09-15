@@ -6,6 +6,108 @@ body {
     line-height: 1.7;
 }
 
+/* text effect */
+/* From Uiverse.io by kennyotsu */ 
+.card {
+   --bg-color:rgb(218, 228, 242);
+  background-color: var(--bg-color);
+  border-radius: 1.25rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s, padding 0.2s;
+}
+.loader {
+  color: rgb(72, 87, 133);
+  font-weight: 700;
+  font-size: 2.2rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 4.5rem;
+  padding: 0.2em 0.7em;
+  min-width: 0;
+  max-width: 100%;
+  word-break: break-word;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 8px;
+}
+
+.words {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+.words::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    var(--bg-color) 10%,
+    transparent 10%,
+    transparent 70%,
+    var(--bg-color) 90%
+  );
+  z-index: 20;
+}
+
+.word {
+  display: block;
+  height: 100%;
+  padding-left: 0.4em;
+  color: rgb(91, 98, 245);
+  animation: spin_4991 6s infinite;
+  font-size: 1.1em;
+  word-break: break-word;
+}
+
+@keyframes spin_4991 {
+  10% {
+    -webkit-transform: translateY(-102%);
+    transform: translateY(-102%);
+  }
+
+  25% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+
+  35% {
+    -webkit-transform: translateY(-202%);
+    transform: translateY(-202%);
+  }
+
+  50% {
+    -webkit-transform: translateY(-200%);
+    transform: translateY(-200%);
+  }
+
+  60% {
+    -webkit-transform: translateY(-302%);
+    transform: translateY(-302%);
+  }
+
+  75% {
+    -webkit-transform: translateY(-300%);
+    transform: translateY(-300%);
+  }
+
+  85% {
+    -webkit-transform: translateY(-402%);
+    transform: translateY(-402%);
+  }
+
+  100% {
+    -webkit-transform: translateY(-400%);
+    transform: translateY(-400%);
+  }
+}
+
+
 /* loader */
 .loader_bg{
     position: fixed;
@@ -280,6 +382,153 @@ a {
 }
 
 
+/* Testimonial */
+    :root {
+      --gap: 2rem;
+      --duration: 30s;
+    }
 
+    body {
+     
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
+      min-height: 100vh;
+      margin: 0;
+     
+    }
 
+    .marquee-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
 
+    .marquee-container::before,
+    .marquee-container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 60px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .marquee-container::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(218,228,242,1) 30%, rgba(218,228,242,0.7) 60%, rgba(218,228,242,0));
+    }
+    .marquee-container::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(218,228,242,1) 30%, rgba(218,228,242,0.7) 60%, rgba(218,228,242,0));
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: var(--gap);
+      width: max-content;
+      animation: scroll var(--duration) linear infinite;
+    }
+
+    .marquee-container:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+      .marquee-container:hover .reverse {
+      animation-play-state: paused;
+    }
+
+    .marquee-container.reverse .marquee-track {
+      animation: scroll-reverse var(--duration) linear infinite;
+    }
+
+    @keyframes scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes scroll-reverse {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .testimonial-card {
+      flex: 0 0 auto;
+      width: clamp(14rem, 70vw, 20rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      background: rgb(218, 228, 242);
+      padding: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: var(--background) 0.2s;
+    }
+    .testimonial-card:hover {
+      background: #f9f9f9;
+    }
+
+    .testimonial-body {
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .testimonial-footer img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .testimonial-footer .name {
+      font-size: clamp(0.85rem, 2vw, 0.9rem);
+      font-weight: bold;
+      color: #111;
+    }
+    .testimonial-footer .title {
+      font-size: clamp(0.7rem, 1.8vw, 0.75rem);
+      color: #666;
+    }
+
+/* Responsive styles for card/loader/words/word */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  .loader {
+    font-size: 1.5rem;
+    height: 2.5rem;
+    padding: 0.2em 0.5em;
+  }
+  .word {
+    font-size: 1em;
+    padding-left: 0.3em;
+  }
+}
+@media (max-width: 480px) {
+  .card {
+    padding: 0.7rem;
+    border-radius: 0.7rem;
+  }
+  .loader {
+    font-size: 1.1rem;
+    height: 2rem;
+    padding: 0.1em 0.3em;
+  }
+  .word {
+    font-size: 0.95em;
+    padding-left: 0.2em;
+  }
+  .words {
+    min-width: 0;
+    width: 100%;
+  }
+}
